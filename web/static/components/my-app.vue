@@ -42,12 +42,15 @@
                 <button type="button" class="btn btn-box-tool" id="organization_remove_link" >Remove</button>
               </div>
               <h3 class="profile-username text-center"><span class='inline-editable' data-type='PUT' data-param-name="organization[name]" data-inline-editurl="/api/v2/organizations/">NAME ORG</span></h3>
-              <ul class="list-group list-group-unbordered">
+              <ul class="list-group list-group-unbordered" style="margin-bottom:5px;">
                 <li class="list-group-item" >
                   <b class="label_field">Website</b> <span class="pull-right"><span class='inline-editable' data-type='PUT' data-param-name="organization[website]" data-inline-editurl="/api/v2/organizations/">WEB</span></span>
                 </li>
               </ul>
+              <b class="label_field">Notes</b>
+              <div style="margin-top:5px;">
               <span class='inline-editable' data-type='PUT' data-input-type="textarea" data-param-name="organization[description]" data-inline-editurl="/api/v2/organizations/">DESCRIPT</span>
+              </div>
             </div><!-- /.box-body -->
           </div><!-- /.box -->
           <div class="box" id="without_organization" style="display:;">
