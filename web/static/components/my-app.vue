@@ -11,27 +11,26 @@
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" id="edit_contact_options" ><i class="fa fa-fw fa-angle-down"></i></button>
                 </div>
-                <h3 class="profile-username text-center"><span class='inline-editable' data-type='PUT' data-param-name="contact[name]" data-inline-editurl="/api/v2/contact/">NAME</span></h3>
+                <h3 class="profile-username" style="margin-right:30px;">
+                <input type="text" placeholder="Name" style="border:0px solid grey;width:100%;line-height:30px;" />
+                </h3>
                 <ul class="list-group list-group-unbordered" style="margin-bottom:5px;">
-                  <li class="list-group-item" >
-                    <b class="label_field">Job Title</b> </i> <span class="pull-right"><span class='inline-editable' data-type='PUT' data-param-name="contact[job_title]" data-inline-editurl="/api/v2/contact/">JOB</span></span>
+                  <li class="list-group-item" style="padding-bottom:4px;">
+                   <input type="text" placeholder="Job Title" style="border:0px solid grey;width:100%;line-height:30px;" />
                   </li>
-                  <li class="list-group-item" >
-                    <b class="label_field">Phone</b> </i> <span class="pull-right"><span class='inline-editable' data-type='PUT' data-param-name="contact[phone]" data-inline-editurl="/api/v2/contact/">PHONE</span></span>
+                  <li class="list-group-item" style="padding-bottom:4px;">
+                   <input type="text" placeholder="Phone" style="border:0px solid grey;width:100%;line-height:30px;" />
                   </li>
-                  <li class="list-group-item" >
-                    <b class="label_field">Email</b> <span class="pull-right"><span class='inline-editable' data-type='PUT' data-param-name="contact[email]" data-inline-editurl="/api/v2/contact/">EMAIL</span></span>
+                  <li class="list-group-item" style="padding-bottom:4px;">
+                   <input type="text" placeholder="Email" style="border:0px solid grey;width:100%;line-height:30px;" />
                   </li>
-                  <li class="list-group-item" >
-                    <b class="label_field">Tags</b><div style="margin-top:5px;">
+                  <li class="list-group-item" style="padding-bottom:4px;">
+                    <div style="margin-top:5px;">
                     <a id="add_tags" href ="javascript:void(0);" style="font-weight:bold;display:inline-block;padding:3px;border-radius:5px;margin-right:7px;color:grey;">+ Add ...</a>
                   </div>
                 </li>
               </ul>
-              <b class="label_field">Notes</b>
-              <div style="margin-top:5px;">
-                <span class='inline-editable' data-type='PUT' data-input-type="textarea" data-param-name="contact[description]" data-inline-editurl="/api/v2/contact/">DESCRIPTION</span>
-              </div>
+               <input type="text" placeholder="Note" style="border:0px solid grey;width:100%;line-height:30px;" />
             </div><!-- /.box-body -->
           </div><!-- /.box -->
         </div>
@@ -39,18 +38,16 @@
           <div class="box" id="with_organization" style="display:;">
             <div class="box-body box-profile">
               <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" id="organization_remove_link" >Remove</button>
-              </div>
-              <h3 class="profile-username text-center"><span class='inline-editable' data-type='PUT' data-param-name="organization[name]" data-inline-editurl="/api/v2/organizations/">NAME ORG</span></h3>
+                  <button type="button" class="btn btn-box-tool" id="edit_contact_options" ><i class="fa fa-fw fa-angle-down"></i></button>
+                </div>
+              <h3 class="profile-username"><span class='inline-editable' data-type='PUT' data-param-name="organization[name]" data-inline-editurl="/api/v2/organizations/">Coca Cola</span></h3>
               <ul class="list-group list-group-unbordered" style="margin-bottom:5px;">
-                <li class="list-group-item" >
-                  <b class="label_field">Website</b> <span class="pull-right"><span class='inline-editable' data-type='PUT' data-param-name="organization[website]" data-inline-editurl="/api/v2/organizations/">WEB</span></span>
+                <li class="list-group-item" style="padding-bottom:4px;">
+                  <input type="text" placeholder="Website" style="border:0px solid grey;width:100%;line-height:30px;" />
                 </li>
               </ul>
-              <b class="label_field">Notes</b>
-              <div style="margin-top:5px;">
-              <span class='inline-editable' data-type='PUT' data-input-type="textarea" data-param-name="organization[description]" data-inline-editurl="/api/v2/organizations/">DESCRIPT</span>
-              </div>
+             <input type="text" placeholder="Note" style="border:0px solid grey;width:100%;line-height:30px;" />
+            
             </div><!-- /.box-body -->
           </div><!-- /.box -->
           <div class="box" id="without_organization" style="display:;">
@@ -136,6 +133,9 @@
 </script>
 
 <style lang="sass">
+  input:focus {
+    outline-width: 0;
+  }
   .my-app {
     margin-left: auto;
     margin-right: auto;
