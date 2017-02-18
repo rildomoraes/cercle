@@ -8,6 +8,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/components.css") %>">
     <!-- ICONS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -19,8 +20,7 @@
 
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
   </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <body class="hold-transition skin-blue layout-top-nav">
@@ -262,8 +262,9 @@ LOST
 <div style="float:none;display:inline-block;padding:40px;background-color:white;margin-right:30px;height:100px;margin-top:10px;background-color:green;font-weight:800;width:200px;font-size:22px;" class="column" data-id="win">
 WIN
 </div>
-<script>window.userToken = "<%= assigns[:user_token] %>";</script>
-     
+    <script>window.userToken = "<%= assigns[:user_token] %>";</script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   </body>
 </html>
 
