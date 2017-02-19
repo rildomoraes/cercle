@@ -12,17 +12,17 @@
                   <button type="button" class="btn btn-box-tool" id="edit_contact_options" ><i class="fa fa-fw fa-angle-down"></i></button>
                 </div>
                 <h3 class="profile-username" style="margin-right:30px;">
-                <input type="text" placeholder="Name" style="border:0px solid grey;width:100%;line-height:30px;" />
+                   <inline-edit v-bind:contact="contact" field="name"></inline-edit>
                 </h3>
                 <ul class="list-group list-group-unbordered" style="margin-bottom:5px;">
                   <li class="list-group-item" style="padding-bottom:4px;">
-                   <input type="text" placeholder="Job Title" style="border:0px solid grey;width:100%;line-height:30px;" />
+                    <inline-edit v-bind:contact="contact" field="job_title"></inline-edit>
                   </li>
                   <li class="list-group-item" style="padding-bottom:4px;">
-                   <input type="text" placeholder="Phone" style="border:0px solid grey;width:100%;line-height:30px;" />
+                    <inline-edit v-bind:contact="contact" field="email"></inline-edit>
                   </li>
                   <li class="list-group-item" style="padding-bottom:4px;">
-                   <input type="text" placeholder="Email" style="border:0px solid grey;width:100%;line-height:30px;" />
+                    <inline-edit v-bind:contact="contact" field="phone"></inline-edit>
                   </li>
                   <li class="list-group-item" style="padding-bottom:4px;">
                     <div style="margin-top:5px;">
@@ -30,7 +30,7 @@
                   </div>
                 </li>
               </ul>
-               <input type="text" placeholder="Note" style="border:0px solid grey;width:100%;line-height:30px;" />
+                <inline-edit v-bind:contact="contact" field="description"></inline-edit>
             </div><!-- /.box-body -->
           </div><!-- /.box -->
         </div>
@@ -128,14 +128,44 @@
 </template>
 
 <script>
-  export default {
+import {Socket, Presence} from "phoenix"
+import InlineEdit from "./inline-edit.vue"
+export default {
+  data() {
+    return {
+      contact_id: null,
+      socket: null,
+      channel: null,
+      contact: {id: null, name: "", phone:"", email:"", job_title:"" }
+    }
+  },
+  components: {
+    'inline-edit': InlineEdit
+  },
+  methods: {
+    connectToSocket() {
+      this.contact_id = $("#meta_data").data("contact_id");
+      this.socket = new Socket("/socket", {params: {token: window.userToken}});
+      this.socket.connect();
+      this.channel = this.socket.channel("contacts:" + this.contact_id, {});
+      this.channel.join()
+        .receive("ok", resp => {  
+          console.log("Join OK", resp);
+          this.channel.push("load_state");
+        })
+        .receive("error", resp => { console.log("Unable to join", resp) });
+      this.channel.on('state', payload => {
+        this.contact = payload;
+      });
+    }
+  },
+  mounted(){
+    this.connectToSocket();
   }
+}
 </script>
 
 <style lang="sass">
-  input:focus {
-    outline-width: 0;
-  }
   .my-app {
     margin-left: auto;
     margin-right: auto;

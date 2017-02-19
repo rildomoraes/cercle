@@ -1,3 +1,6 @@
+
+<div id="meta_data" data-contact_id="<%=Poison.encode!(@contact.id)%>">
+</div>
 <div id="app">
   <my-app><my-app>
 </div>
