@@ -40,7 +40,7 @@
               <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" id="edit_contact_options" ><i class="fa fa-fw fa-angle-down"></i></button>
                 </div>
-              <h3 class="profile-username"><span class='inline-editable' data-type='PUT' data-param-name="organization[name]" data-inline-editurl="/api/v2/organizations/">Coca Cola</span></h3>
+              <h3 class="profile-username"><span class='inline-editable' data-type='PUT' data-param-name="organization[name]" data-inline-editurl="/api/v2/organizations/">ORGANIZATION NAME</span></h3>
               <ul class="list-group list-group-unbordered" style="margin-bottom:5px;">
                 <li class="list-group-item" style="padding-bottom:4px;">
                   <input type="text" placeholder="Website" style="border:0px solid grey;width:100%;line-height:30px;" />
