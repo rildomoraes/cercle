@@ -1,5 +1,5 @@
 <template>
-<textarea type="text" :placeholder="field" style="border:0px solid grey;width:100%;line-height:30px;height:30px;" >{{contact[field]}}</textarea>
+<input type="text" :placeholder="field" style="border:0px solid grey;width:100%;line-height:30px;height:30px;" :value="contact[field]">
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
 </script>
 
 <style lang="sass">
-  textarea:focus {
+  input:focus {
     outline-width: 0;
   }
   textarea{
