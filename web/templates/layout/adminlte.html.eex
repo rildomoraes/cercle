@@ -264,7 +264,6 @@ WIN
 </div>
     <script>window.userToken = "<%= assigns[:user_token] %>";</script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   </body>
 </html>
 
