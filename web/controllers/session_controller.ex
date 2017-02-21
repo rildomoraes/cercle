@@ -7,8 +7,8 @@ defmodule CercleApi.SessionController do
     |> render(:new)
   end
 
-  def create(conn, %{"login" => login, "password" => pass}) do
-    case CercleApi.Session.authenticate(login, pass) do
+  def create(conn, %{"login" => login, "password" => pass, "time_zone" => time_zone}) do
+    case CercleApi.Session.authenticate(login, pass, time_zone) do
       {:ok, user} ->
         path = get_session(conn, :redirect_url) || "/activity"
         conn

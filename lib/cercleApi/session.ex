@@ -9,6 +9,14 @@ defmodule CercleApi.Session do
     end
   end
 
+  def authenticate(login, password, _time_zone) do
+    user = Repo.get_by(User, login: String.downcase(login))
+    case check_password(user, password) do
+      true -> {:ok, user}
+      _ -> :error
+    end
+  end
+
   defp check_password(user, password) do
     case user do
       nil -> Comeonin.Bcrypt.dummy_checkpw()
