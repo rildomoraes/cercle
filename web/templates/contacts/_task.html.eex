@@ -7,10 +7,10 @@
 
   </div>
   <div class="col-md-2">
-    <input type="text" value="<%=Ecto.DateTime.Utils.zero_pad(@due_date.month, 2)%>/<%=Ecto.DateTime.Utils.zero_pad(@due_date.day, 2)%>/<%=@due_date.year%>" data-default="<%=Ecto.DateTime.Utils.zero_pad(@due_date.month, 2)%>/<%=Ecto.DateTime.Utils.zero_pad(@due_date.day, 2)%>/<%=@due_date.year%>" style="width:100%;background-color: #f7f7f7;border: 0px solid #e0e0e0;border-radius:5px;padding:0px;padding-left: 5px;" data-id="<%=@id%>" class="datepicker" id="task_date_<%=@id%>">
+    <input type="text" value='<%=change_timex_custom_date_format(change_time_zone(@due_date,@current_user_time_zone))%>' data-default="<%=Ecto.DateTime.Utils.zero_pad(@due_date.month, 2)%>/<%=Ecto.DateTime.Utils.zero_pad(@due_date.day, 2)%>/<%=@due_date.year%>" style="width:100%;background-color: #f7f7f7;border: 0px solid #e0e0e0;border-radius:5px;padding:0px;padding-left: 5px;" data-id="<%=@id%>" class="datepicker" id="task_date_<%=@id%>">
   </div>
   <div class="col-md-2">
-    <input type="text" value="<%=Ecto.DateTime.Utils.zero_pad(@due_date.hour,2)%>:<%=Ecto.DateTime.Utils.zero_pad(@due_date.min,2)%>" data-default="<%=@due_date.hour%>:<%=@due_date.min%>" style="width:100%;background-color: #f7f7f7;border: 0px solid #e0e0e0;border-radius:5px;padding:0px;padding-left: 5px;" data-id="<%=@id%>" id="task_hour_<%=@id%>" class="timepicker">
+    <input type="text" value='<%=change_timex_hour_format(change_time_zone(@due_date,@current_user_time_zone))%>' data-default="<%=@due_date.hour%>:<%=@due_date.min%>" style="width:100%;background-color: #f7f7f7;border: 0px solid #e0e0e0;border-radius:5px;padding:0px;padding-left: 5px;" data-id="<%=@id%>" id="task_hour_<%=@id%>" class="timepicker">
   </div>
   <div class="col-md-1">
     <select name="select" id="activity_user_id_<%=@id%>" class="activity_user_id" data-id="<%=@id%>">

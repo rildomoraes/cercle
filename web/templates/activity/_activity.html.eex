@@ -4,7 +4,7 @@
   </td>
   
   <td style="font-size:16px;">
-   <a href="/contacts/<%=@activity.contact_id%>" style="color: #565656;">
+  <a href="/contacts/<%=@activity.contact_id%>" style="color: #565656;">
   <span style=""> <%=@activity.title %></span>
   </a><br />
   <a href="/contacts/<%=@activity.contact_id%>" style="color: #565656;">
@@ -12,12 +12,12 @@
   </a>
   </td>
   <td style="width:150px;">
-  <%=if @hour do %>
-    <%=timex_hour_format(@activity.due_date)%>
-  <%end%>
-  <%=if !@hour do %>
-    <%=timex_date_format(@activity.due_date)%>
-  <%end%>
+    <%=if @hour do %>
+      <%=change_timex_hour_format(change_time_zone(@activity.due_date,@current_user_time_zone))%>
+    <%end%>
+    <%=if !@hour do %>
+      <%=change_timex_date_format(change_time_zone(@activity.due_date,@current_user_time_zone))%>
+    <%end%>
   </td>
   <td style="width:30px;">
     <input type="checkbox" class="flat-green activity_page_toggle" data-id="<%=@activity.id%>" <%= if @activity.is_done do %>checked<%end%>>

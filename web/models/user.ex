@@ -12,6 +12,7 @@ defmodule CercleApi.User do
 		field :login, :string
     field :profile_image, CercleApi.UserProfileImage.Type
     field :name, :string #is username
+    field :time_zone, :string, default: "America/New_York"
     timestamps
 
     has_many :activities, CercleApi.Activity, on_delete: :delete_all
@@ -20,7 +21,7 @@ defmodule CercleApi.User do
   end
 
   @required_fields ~w()
-  @optional_fields ~w(user_name password_reset_code company_id login name)
+  @optional_fields ~w(user_name password_reset_code company_id login name time_zone)
   @required_file_fields ~w()
   @optional_file_fields ~w(profile_image)
 

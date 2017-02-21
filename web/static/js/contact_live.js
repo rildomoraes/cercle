@@ -106,10 +106,8 @@ let ContactLive = {
   
         var hour = task_hour_item.val().split(":")[0];
         var minute = task_hour_item.val().split(":")[1];
-  
-        var new_date_string =  new_year +'-'+ new_month+ '-'+ new_day+'T'+hour +':'+ minute +':00Z';
-        var new_date = new Date( new_date_string);
-      
+        var new_date_string =  new_year +'-'+ new_month+ '-'+ new_day+' '+hour +':'+ minute;
+        var new_date = new Date(new_date_string); 
         var new_date_to_send = new_date.toISOString();
         
         var url = '/api/v2/activity/' + $(this).data('id');

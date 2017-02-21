@@ -1,55 +1,10 @@
-<div class="container homepage" style="width:100%;background-color:whitesmoke;text-align:center;padding-bottom:100px;">
-  <div class="row" style="text-align: center;color:##565656;">  
-    <div class="col-xs-12">
-      <img src="/images/logo.png" class="app-icon img-rounded" style="width:150px;margin-top:50px;border-radius:40px;">
-      <h1 style="font-family: 'Roboto', sans-serif;font-size:60px;font-weight:400;margin-bottom:50px;margin-top:40px;line-height:60px;">Cercle </h1>
-      <h1 style="font-family: 'Roboto', sans-serif;font-size:30px;font-weight:400;margin-bottom:50px;margin-top:40px;line-height:60px;">
-        World-Class Open Source CRM
-        <Br />
-        <a href="/#" style="color:grey;">Written with Phoenix Framework</a>
-        <Br />
-        <a href="https://github.com/cerclecrm/cercle" style="color:grey;font-size:22px;color:grey;">Available on Github</a>
-        </span>
-      </h1>
-      <h2 style="font-family: 'Roboto', sans-serif;font-size:40px;font-weight:300;margin-bottom:40px;">Old fashioned CRMs end here. </h2>
-      <p style="font-family: 'Open Sans', sans-serif;font-size:14px;margin-top:40px;margin-bottom:40px;color:#565656;max-width:500px;margin:0px auto;">
-        We are a community of media agencies which think that our CRM should be open source and free. That's why we build Cercle. We think the life of a contact is like a trello card: It should be easy to manage (no more complex lead conversion). It should be easy as well to add new functionnalities without reinvent the wheel (first class add-ons system like Wordpress).
-        <Br />
-        <Br />
-        <h2>Members</h2>
-        To Be Announced Very Soon
-      </p>
-    </div>
-  </div>
-  <!--
-  <div class="container" style="max-width:700px;margin-top:30px;">
-    <div class="row" style="text-align: center;color:##565656;max-width:650px;">  
-      <div class="col-md-3">
-        <img src="/images/partner_1.jpg" style="width:100%">
-      </div>
-      <div class="col-md-3">
-        <img src="/images/partner_2.png" style="width:100%">
-      </div>
-      <div class="col-md-3">
-        <img src="/images/partner_3.png" style="width:100%">
-      </div>
-      <div class="col-md-3">
-        <img src="/images/partner_4.jpg" style="width:100%">
-      </div>
-    </div>
-  </div>
-  -->
-  <div class="container" style="max-width:700px;">
-    <h2>You want to be part of the alpha-test? </h2>
-    Join the cercle so we can build together the best CRM for our respective business.
-    <Br />
-    <Br />
-    <h2>Kickstarter Campaign</h2>
-    We will start a kickstarter campaign March 1st to support the dev team.
-    <h2>Contact Us</h2>
-    To support the initiative: marie@cercle.co
-    <Br />
-    For Press Inquiries: press@cercle.co
-  </div>
-</p>
+<div class="container homepage" style="width:100%;color:grey;">
+  <a href="/login" style="color:white;">Login</a>
+  &nbsp;|&nbsp;
+  <a href="/login" style="color:white;">Register</a>
 </div>
+<script>
+if (window.location.hostname == "www.cercle.co") {
+   window.location.href = 'http://get.cercle.co'; 
+}
+</script>

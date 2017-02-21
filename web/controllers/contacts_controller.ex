@@ -40,6 +40,7 @@ defmodule CercleApi.ContactsController do
   end
 
   def edit(conn, %{"id" => id}) do
+    
     company_id = conn.assigns[:current_user].company_id
     contact = Repo.get!(Contact, id) |> Repo.preload([:organization, :company, :tags])
     company = Repo.get!(CercleApi.Company, contact.company_id) |> Repo.preload([:users])

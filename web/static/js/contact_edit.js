@@ -194,7 +194,8 @@ export var ContactEdit = {
           data: { 'activity[contact_id]': contact_id, 
             'activity[user_id]': user_id, 
             'activity[due_date]': new Date().toISOString(), 
-            'activity[company_id]': company_id, 
+            'activity[company_id]': company_id,
+            'activity[current_user_time_zone]': $(this).data('current_user_time_zone'),
             'activity[title]': 'Call', 
           },
           complete: function(xhr, status){
@@ -240,7 +241,7 @@ export var ContactEdit = {
   
       ele.click(function(){
         ele.hide();
-        var editContainer = $("<span class='editable-container'><form class='form-inline editableform'><div class='editable-input'></div><div class='editable-buttons'><button class='btn btn-primary btn-xs editable-submit'><i class='glyphicon glyphicon-ok'></i></button><a class='btn btn-default btn-xs editable-cancel'><i class='glyphicon glyphicon-remove'></i></a></div></form</span>");
+        var editContainer = $("<span class='editable-container'><form class='form-inline editableform'><div class='editable-input'></div><div class='editable-buttons'><button class='btn btn-primary btn-xs editable-submit'><i class='fa fa-check'></i></button><a class='btn btn-default btn-xs editable-cancel'><i class='fa fa-times'></i></a></div></form</span>");
         var inputElement;
         if (ele.data('input-type') == 'textarea'){
           inputElement = $("<textarea style='width:100%;height:80px;' ></textarea>");

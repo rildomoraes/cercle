@@ -72,26 +72,29 @@
                   <%= text_input f, :password, class: "form-control" %>
                   <%= error_tag f, :password %>
                 </div>
+                <br />
 
-               <br />
+                <div class="form-group">
+                  <%= label f, :time_zone, "Time Zone", class: "control-label" %>
+                  <%= select(f, :time_zone , load_timezones, prompt: "Choose your Time Zone", class: "form-control") %>
+                  <%= error_tag f, :time_zone %>
+                </div>                
+                <br />
 
-                  <div class="form-group">
-                    <div class='row'>
-                      <div class='col-md-10'>
-                        <%= label f, :profile_image, "Profile image", class: "control-label" %>
-                        <%= file_input f, :profile_image %>
-                        <%= error_tag f, :profile_image %>
-                      </div>
-                      <div class='col-md-2'>
-                        <%= if f.data.profile_image do %>
-                          <img src="<%= CercleApi.UserProfileImage.url({f.data.profile_image, f.data}, :small) %>" style="max-width: 100%;" />
-                        <% end %>
-                      </div>
+                <div class="form-group">
+                  <div class='row'>
+                    <div class='col-md-10'>
+                      <%= label f, :profile_image, "Profile image", class: "control-label" %>
+                      <%= file_input f, :profile_image %>
+                      <%= error_tag f, :profile_image %>
+                    </div>
+                    <div class='col-md-2'>
+                      <%= if f.data.profile_image do %>
+                        <img src="<%= CercleApi.UserProfileImage.url({f.data.profile_image, f.data}, :small) %>" style="max-width: 100%;" />
+                      <% end %>
                     </div>
                   </div>
-               
-               
-
+                </div>
                <br />
 
              </div><!-- /.box-body -->

@@ -1,6 +1,6 @@
 defmodule CercleApi.Activity do
   use CercleApi.Web, :model
-	
+
   schema "activities" do
     belongs_to :user, CercleApi.User
     belongs_to :contact, CercleApi.Contact

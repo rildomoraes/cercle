@@ -15,7 +15,6 @@ defmodule Passport.Session do
 
   def login(conn, email, given_pass) do
     user = @repo.get_by(@resource, login: email)
-
     cond do
       user && checkpw(given_pass, user.password_hash) ->
         {:ok, login(conn, user)}

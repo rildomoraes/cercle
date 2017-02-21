@@ -1,8 +1,160 @@
 
+<<<<<<< HEAD
 <div id="meta_data" data-contact_id="<%=Poison.encode!(@contact.id)%>">
 </div>
 <div id="app">
   <my-app><my-app>
+=======
+                <%= for tag <- @contact.tags do %>
+                <a href ="#" style="font-weight:bold;display:inline-block;padding:3px;border-radius:5px;margin-right:7px;color:grey;text-decoration:underline;"><%=tag.name%> </a>
+              <%end%>
+               <a id="add_tags" href ="javascript:void(0);" style="font-weight:bold;display:inline-block;padding:3px;border-radius:5px;margin-right:7px;color:grey;">+ Add ...</a>
+              </div>
+              </li>
+            </ul>
+            <b class="label_field">Notes</b>
+            <div style="margin-top:5px;">
+            <span class='inline-editable' data-type='PUT' data-input-type="textarea" data-param-name="contact[description]" data-inline-editurl="/api/v2/contact/<%= @contact.id %>"><%= @contact.description %></span>
+            </div>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+      <div class="col-md-6">
+        <div class="box" id="with_organization" style="display:<%= if !(@contact.organization_id ) do %>none<%end%>;">
+          <div class="box-body box-profile">
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" id="organization_remove_link" >Remove</button>
+            </div>
+            <h3 class="profile-username text-center"><span class='inline-editable' data-type='PUT' data-param-name="organization[name]" data-inline-editurl="/api/v2/organizations/<%= @contact.organization_id %>"><%=if @contact.organization_id  do %><%= @contact.organization.name %><%end%></span></h3>
+            <ul class="list-group list-group-unbordered">
+              <li class="list-group-item" >
+                <b class="label_field">Website</b> <span class="pull-right"><span class='inline-editable' data-type='PUT' data-param-name="organization[website]" data-inline-editurl="/api/v2/organizations/<%= @contact.organization_id %>"><%=if @contact.organization_id  do %><%= @contact.organization.website %><%end%></span></span>
+              </li>
+            </ul>
+            <span class='inline-editable' data-type='PUT' data-input-type="textarea" data-param-name="organization[description]" data-inline-editurl="/api/v2/organizations/<%= @contact.organization_id %>"><%=if @contact.organization_id  do %><%= @contact.organization.description %><%end%></span>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+        <div class="box" id="without_organization" style="display:<%= if @contact.organization do %>none<%end%>;">
+          <div class="box-body box-profile" style="text-align:center;">
+            <a href="#sd" style="font-size:16px;" id="change_company_modal">+Add a company</a>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div><!-- /.col -->
+    </div>
+    <%=if @opportunity do %>
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal3">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">What is his name?</h4>
+      </div>
+      <div class="modal-body">
+        <form id='form_contact_to_opportunity'>
+        <input type='hidden' name='contact[company_id]' value='<%= @company.id %>' id="company_id" />
+        <input type='hidden' name='contact[user_id]' value='<%=assigns[:current_user].id%>' id="user_id" />
+        <Br />
+        <div class='referral-form-body'>
+          <input class='form-control' name='contact[name]' type='text' placeholder='Name of the Contact' class='user_name'  style="max-width:300px;margin-bottom:10px;" id="contact_name"/>
+        </div>
+        </form>
+      </div>
+       <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="submit_contact_to_opportunity" data-company_id="<%=@contact.company_id%>" data-contact_id="<%=@contact.id%>" data-user_id="<%=assigns[:current_user].id%>">Add Contact</button>
+      </div>
+    </div>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+  <div class="row">
+      <div class="col-md-12">
+        <div class="post" style="background-color:white;box-shadow: 0 1px 1px rgba(0,0,0,0.1);border-radius: 3px;padding:20px;margin-bottom:10px;">
+    <button type="button" class="btn btn-danger pull-right" style="margin-top:10px;" id="opportunity_lost" data-id="<%=@opportunity.id%>">LOST</button>
+    <button type="button" class="btn btn-success pull-right" style="margin-top:10px;margin-right:10px;" id="opportunity_win" data-id="<%=@opportunity.id%>">WIN</button>
+   
+    <div style="" id="change_status">
+      <span style="font-size:24px;color:rgb(150,150,150);"> <i class="fa fa-rocket" style="color:#d8d8d8;"></i> Part of
+        <span style="color:rgb(102,102,102);" class='inline-editable' data-type='PUT' data-param-name="opportunity[name]" data-inline-editurl="/api/v2/opportunity/<%= @opportunity.id %>"><%=@opportunity.name %></span>
+      </span>
+      <Br />
+      <Br />
+       <div style="margin-right:20px;margin-bottom:10px;">
+      Managed by:
+      <select name="select" id="change_opportunity_user_id" data-id="<%=@opportunity.id%>">
+        <%= for u <- @company.users do %>
+        <option value="<%=u.id%>" <%= if @opportunity.user_id == u.id do %>selected<%= end %>><%= u.user_name %> </option> 
+        <%end%>
+      </select>
+
+    </div>
+      Status:
+      <select name="select" id="change_opportunity_stage" data-id="<%=@opportunity.id%>">
+        <option value="0" <%= if @opportunity.stage == 0 do %>selected<%= end %>>Untouched Contact </option> 
+        <option value="1" <%= if @opportunity.stage == 1 do %>selected<%= end %>>Contact Made</option> 
+        <option value="2"<%= if @opportunity.stage == 2 do %>selected<%= end %>>Needs Defined</option>
+        <option value="3" <%= if @opportunity.stage == 3 do %>selected<%= end %>>Proposal Made</option>
+        <option value="4" <%= if @opportunity.stage == 4 do %>selected<%= end %>>Negotations Started</option>
+      </select>
+      <Br />
+      <Br />
+      Contacts Involved: 
+      <%= for o <- @opportunity_contacts do %>
+        <a href ="/contacts/<%=o.id%>" style="font-weight:bold;display:inline-block;padding:3px;border-radius:5px;margin-right:7px;color:grey;text-decoration:underline;"><%= o.name %> </a>
+      <% end %>
+      <a id="add_contact_to_opportunity" href ="javascript:void(0);" style="font-weight:bold;display:inline-block;padding:3px;border-radius:5px;margin-right:7px;color:grey;">+ Add ...</a>
+    </div>
+  </div>
+  </div>
+  </div>
+  <%= end %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="post" style="background-color:white;box-shadow: 0 1px 1px rgba(0,0,0,0.1);border-radius: 3px;">
+          <!-- /.user-block -->
+          <div style="padding:15px;">
+            <form id="contact-form" />
+            <h3 style="margin-top:0px;border-bottom:0px solid #d8d8d8;">
+              <i class="fa fa-fw fa-check-square-o" style="color:#d8d8d8;"></i> To-Do
+            </h3>
+            <div id="tasks" style="padding:15px;">
+              <%= for activity <- @activities do %>
+              <%= render "_task.html", id: activity.id, is_done: activity.is_done, title: activity.title, due_date: activity.due_date, user_name: activity.user.user_name, user_id: activity.user_id, company: @company, current_user_time_zone: @conn.assigns[:current_user].time_zone %>
+              <%end%>
+            </div>
+            <div style="padding-left:15px;">
+              <a style="letter-spacing: 1px;color:grey;font-weight:bold;" id="activity_add" href="javascript:void(0);" id="activity_add" data-contact_id="<%=@contact.id%>" data-user_id="<%=@conn.assigns[:current_user].id%>" data-company_id="<%=@company.id%>" data-current_user_time_zone="<%=@conn.assigns[:current_user].time_zone%>" >Schedule a Task...</a>
+            </div>
+            <Br />
+            <Br />
+            <h3 style="margin-top:0px;border-bottom:0px solid #d8d8d8;">
+              <i class="fa fa-fw fa-comments-o" style="color:#d8d8d8;"></i>
+              Comment
+            </h3>
+            <input type="hidden" name="timeline_event[event_name]" value="comment">
+            <input type="hidden" name="timeline_event[contact_id]" value="<%=@contact.id%>">
+            <input type="hidden" name="timeline_event[user_id]" value="<%=@conn.assigns[:current_user].id%>">
+            <input type="hidden" name="timeline_event[company_id]" value="<%=@conn.assigns[:current_user].company_id%>">
+            <Br />
+            <div style="margin-bottom:0px;">
+            <img class="img-circle img-bordered-sm" src="<%= CercleApi.UserProfileImage.url({@conn.assigns[:current_user].profile_image, @conn.assigns[:current_user]}, :small) %>" alt="user image" style="width:40px;float:left;">
+            <div style="margin-left:50px;margin-right:10px;">
+            <textarea class="form-control" name="timeline_event[content]" id="inputExperience" placeholder="Write a comment.." style="height:70px;"></textarea>
+            <br />
+             <input type="submit" value='Send' class="btn btn-primary" id="submit_timeline_event" /> 
+            </div>
+            </div>
+           
+          </form>
+        </div>
+      </div>
+      <div id="timeline_events">
+        <%= for timeline_event <- @events do %>
+        <%= render "_timeline_event.html", timeline_event: timeline_event %>
+        <% end %>
+      </div>
+    </div><!-- /.col -->
+  </div>
+</section><!-- /.content -->
+>>>>>>> master
 </div>
 
 
