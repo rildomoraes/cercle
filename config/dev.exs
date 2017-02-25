@@ -34,5 +34,5 @@ config :phoenix, :stacktrace_depth, 20
 
 # Guardian configuration
 config :guardian, Guardian,
-  secret_key: "7JyRrsVsYB8izuJTJvgMfkbl45pYIIRefD2wOnzrhoIkNbJDLQzeigVGryThQc/O",
+  secret_key: "7JyRrsVsYB8izuJTJvgMfkbl45pYIIRefD2wOnzrhoIkNbJDLQzeigVGryThQc/O"
 import_config "dev.secret.exs"
